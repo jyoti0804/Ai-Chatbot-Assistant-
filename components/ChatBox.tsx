@@ -113,21 +113,25 @@ export default function ChatBox({ messages, setMessages }: ChatBoxProps) {
   };
 
   return (
-    <div className="flex h-screen bg-blue-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="flex flex-col md:flex-row h-screen bg-blue-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       {/* Sidebar */}
-      <aside className="flex md:flex flex-col w-64 p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 shadow gap-4 h-screen overflow-y-auto">
-        <h2 className="text-xl font-semibold mb-3">Quick Prompts</h2>
-        {Object.entries(PROMPTS).map(([key, prompt]) => (
-          <Button
-            key={key}
-            size="sm"
-            variant="outline"
-            className="text-teal-700 dark:text-teal-400 border-teal-300 dark:border-teal-600 hover:bg-teal-200 dark:hover:bg-teal-600 hover:text-white rounded-md"
-            onClick={() => sendMessage(prompt)}
-          >
-            {key.charAt(0).toUpperCase() + key.slice(1)}
-          </Button>
-        ))}
+      <aside className="flex md:flex-col flex-row md:w-64 w-full  md:overflow-y-auto p-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 shadow gap-2 md:gap-4">
+        <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-3 whitespace-nowrap">
+          Quick Prompts
+        </h2>
+        <div className="flex md:flex-col flex-row gap-2 md:gap-3">
+          {Object.entries(PROMPTS).map(([key, prompt]) => (
+            <Button
+              key={key}
+              size="sm"
+              variant="outline"
+              className="text-teal-700 dark:text-teal-400 border-teal-300 dark:border-teal-600 hover:bg-teal-200 dark:hover:bg-teal-600 hover:text-white rounded-md whitespace-nowrap flex-shrink-0"
+              onClick={() => sendMessage(prompt)}
+            >
+              {key.charAt(0).toUpperCase() + key.slice(1)}
+            </Button>
+          ))}
+        </div>
       </aside>
 
       {/* Chat Area */}
@@ -162,7 +166,7 @@ export default function ChatBox({ messages, setMessages }: ChatBoxProps) {
           </ScrollArea>
 
           {/* Input */}
-          <div className="flex flex-col md:flex-row gap-2 p-4 bg-teal-50 dark:bg-gray-700 rounded-b-lg border-t border-gray-200 dark:border-gray-600">
+          <div className="flex flex-col md:flex-row gap-2 p-3 md:p-4 bg-teal-50 dark:bg-gray-700 rounded-b-lg border-t border-gray-200 dark:border-gray-600">
             <Textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -171,14 +175,14 @@ export default function ChatBox({ messages, setMessages }: ChatBoxProps) {
             />
             <div className="flex gap-2 mt-2 md:mt-0">
               <Button
-                className="h-[50px] w-[75px] bg-teal-400 dark:bg-teal-600 text-white rounded-md"
+                className="h-[50px] w-[75px] bg-teal-400 dark:bg-teal-600 text-white rounded-md flex-shrink-0"
                 onClick={() => sendMessage()}
                 disabled={loading}
               >
                 Send
               </Button>
               <Button
-                className="h-[50px] w-[85px] border border-teal-400 dark:border-teal-500 text-teal-700 dark:text-teal-300 hover:bg-teal-100 dark:hover:bg-teal-700 rounded-md"
+                className="h-[50px] w-[85px] border border-teal-400 dark:border-teal-500 text-teal-700 dark:text-teal-300 hover:bg-teal-100 dark:hover:bg-teal-700 rounded-md flex-shrink-0"
                 variant="outline"
                 onClick={() => setMessages([])}
               >
