@@ -115,7 +115,7 @@ export default function ChatBox({ messages, setMessages }: ChatBoxProps) {
   return (
     <div className="flex h-screen bg-blue-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       {/* Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 shadow gap-4 h-screen overflow-y-auto">
+      <aside className="flex md:flex flex-col w-64 p-6 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 shadow gap-4 h-screen overflow-y-auto">
         <h2 className="text-xl font-semibold mb-3">Quick Prompts</h2>
         {Object.entries(PROMPTS).map(([key, prompt]) => (
           <Button
